@@ -64,7 +64,7 @@ print(face_labels.shape)
 
 trainset = np.concatenate((face_dataset,face_labels),axis=1)
 print(trainset.shape)
-# file_name = input("Enter the name of the person")
+
 while True:
 
     ret,frame = cap.read()
@@ -72,7 +72,7 @@ while True:
     if ret==False:
          continue
     
-    # gray_frame  =cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    
 
     faces = face_cascade.detectMultiScale(frame,1.3,5)
     faces =  sorted(faces,key=lambda f:f[2]*f[3],reverse=True)
@@ -90,13 +90,10 @@ while True:
         cv2.putText(frame,pred_name,(x,y-10),cv2.FONT_HERSHEY_SIMPLEX,1,(255,0,0),2,cv2.LINE_AA)
         cv2.rectangle(frame,(x,y),(x+w,y+h),(0,255,200),2)
 
-#         skip+=1
-#         if skip%10==0:
-#             face_data.append(face_section)
-#             print(len(face_data))
+
 
     cv2.imshow("Frame",frame)
-#     cv2.imshow("Face section",face_section)
+
 
     
 
